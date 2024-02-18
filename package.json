@@ -1,0 +1,29 @@
+{
+  "name": "tx-tracer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.24.2",
+    "alchemy-sdk": "^3.1.2",
+    "cron": "^3.1.6",
+    "dotenv": "^16.4.4",
+    "ethereum-multicall": "^2.21.0",
+    "ethers": "5",
+    "mongoose": "^8.1.3",
+    "moralis": "^2.24.2",
+    "redis": "^4.6.13"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "prepare": "husky",
+    "dev": "nodemon index.js --ignore results.json"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.0.11",
+    "nodemon": "^3.0.3"
+  }
+}
