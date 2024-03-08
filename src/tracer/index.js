@@ -22,7 +22,7 @@ const fixMissingBlocks = async () => {
   }
   tracer_locks.active = true;
   const { missingBlocks } = (await Block.aggregate(missingBlockPipeline))[0];
-  if (missingBlocks.length) {
+  if (missingBlocks.length === 0) {
     console.log('Nothing to catchup!');
   } else {
     console.log(`${missingBlocks.length} blocks out of sync. Trying to catchup!`);
