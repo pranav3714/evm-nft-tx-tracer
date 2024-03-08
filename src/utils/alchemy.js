@@ -2,6 +2,7 @@ const { Alchemy } = require('alchemy-sdk');
 const { logHandler } = require('./log-handler');
 const { NftEvent } = require('../../models/nft-events.model');
 const { flattenArray } = require('./common');
+const { publishKafkaEvent } = require('./kafka');
 
 const getAndSaveEventsByBlockAlchemy = async (provider, session, blockHash) => {
   const alSDK = new Alchemy({
@@ -17,7 +18,9 @@ const getAndSaveEventsByBlockAlchemy = async (provider, session, blockHash) => {
     if (transferEvents.length === 0) {
       continue;
     }
-    await NftEvent.insertMany(flattenArray(transferEvents), { session });
+    const singleArray = flattenArray(transferEvents);
+    await NftEvent.insertMany(singleArray, { session });
+    await publishKafkaEvent(JSON.stringify(singleArray));
   }
 };
 

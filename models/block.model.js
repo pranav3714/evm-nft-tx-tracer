@@ -10,7 +10,7 @@ const blockSchema = new mongoose.Schema(
     },
     hash: {
       type: String,
-      // unique: true,
+      unique: true,
     },
     timestamp: {
       type: Date,
